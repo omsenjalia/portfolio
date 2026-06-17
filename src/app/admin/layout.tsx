@@ -9,7 +9,7 @@ export default function AdminLayout({
   return (
     <SmoothScroll>
       <div className="min-h-screen flex flex-col">
-        <div className="flex items-center justify-between px-6 py-3 border-b border-border">
+        <div className="flex items-center justify-between px-6 py-3 border-b border-ink-border">
           <Link
             href="/"
             className="font-bold font-display text-sm tracking-widest text-ink uppercase hover:text-accent transition-colors"

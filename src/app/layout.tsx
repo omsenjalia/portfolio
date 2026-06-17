@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Syne, DM_Mono } from "next/font/google";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 import "./globals.css";
 
 const syne = Syne({
@@ -44,7 +45,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
-      <body className="bg-paper overflow-hidden">{children}</body>
+      <body className="bg-background overflow-hidden"><SmoothScroll>{children}</SmoothScroll></body>
     </html>
   );
 }

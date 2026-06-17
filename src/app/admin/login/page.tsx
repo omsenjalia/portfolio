@@ -13,7 +13,7 @@ export default function LoginPage() {
       >
         <button
           type="submit"
-          className="px-4 py-2 bg-ink text-paper text-sm font-body rounded-sm
+          className="px-4 py-2 bg-ink text-background text-sm font-body rounded-sm
                      hover:bg-ink-light transition-colors"
         >
           Continue with GitHub →

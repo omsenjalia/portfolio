@@ -1,5 +1,6 @@
 import { getGitHubProfile } from "@/lib/github";
 import { getCV, getNow, getUses, getPinned, type Pin } from "@/lib/content";
+import { getProjectRepos, type ProjectOverview } from "@/lib/projects";
 import { auth } from "@/auth";
 import Book from "@/components/book/Book";
 
@@ -10,12 +11,14 @@ export default async function Home() {
   let cv = null;
   let now = null;
   let uses = null;
+  let projects: ProjectOverview[] = [];
   let pins: Pin[] = [];
 
   try { profile = await getGitHubProfile(); } catch {}
   try { cv = await getCV(); } catch {}
   try { now = await getNow(); } catch {}
   try { uses = await getUses(); } catch {}
+  try { projects = await getProjectRepos(); } catch {}
 
   const session = await auth();
   const isAdmin =
@@ -38,6 +41,7 @@ export default async function Home() {
       uses={uses}
       pins={pins}
       isAdmin={isAdmin}
+      projects={projects}
     />
   );
 }

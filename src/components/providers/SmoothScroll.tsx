@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "lenis";
 import gsap from "gsap";
 
 export default function SmoothScroll({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    const lenis = new Lenis({
-      lerp: 0.08,
-    });
+  const tickerRef = useRef<gsap.TickerCallback | null>(null);
 
-    gsap.ticker.add((time) => lenis.raf(time * 1000));
+  useEffect(() => {
+    const lenis = new Lenis({ lerp: 0.08 });
+
+    tickerRef.current = (time) => lenis.raf(time * 1000);
+    gsap.ticker.add(tickerRef.current);
     gsap.ticker.lagSmoothing(0);
 
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -20,7 +21,7 @@ export default function SmoothScroll({ children }: { children: React.ReactNode }
     }
 
     return () => {
-      gsap.ticker.remove(lenis.raf);
+      if (tickerRef.current) gsap.ticker.remove(tickerRef.current);
       lenis.destroy();
     };
   }, []);
