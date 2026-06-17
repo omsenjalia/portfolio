@@ -9,132 +9,119 @@ export default async function CV() {
   const cv = await getCV();
 
   return (
-    <div className="max-w-prose mx-auto px-6 py-section">
-      <h1 className="text-4xl font-display font-bold text-ink mb-2">CV</h1>
-      <p className="text-lg font-body text-ink-muted mb-1">
-        {cv.name} — {cv.title}
-      </p>
-      <div className="flex flex-wrap gap-3 mb-8 text-sm font-body text-ink-faint">
-        {cv.email && <span>{cv.email}</span>}
-        <a
-          href={`https://github.com/${cv.github}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-accent hover:text-accent-hover transition-colors"
-        >
-          github.com/{cv.github}
-        </a>
-      </div>
+    <div className="max-w-page mx-auto px-6 pt-12 pb-16">
+      <div className="max-w-prose mx-auto">
+        <div className="notebook-header-line mb-6"></div>
+        <h1 className="text-2xl font-bold font-display text-ink mb-1">CV</h1>
+        <p className="text-xs font-body text-ink-faint mb-6">
+          {cv.name} — {cv.title}
+        </p>
 
-      {cv.summary && (
-        <section className="mb-8">
-          <h2 className="text-xl font-display font-bold text-ink mb-3">Summary</h2>
-          <p className="font-body text-ink leading-relaxed">{cv.summary}</p>
-        </section>
-      )}
+        {cv.summary && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-2">
+              Summary
+            </h2>
+            <p className="text-sm font-body text-ink leading-relaxed">{cv.summary}</p>
+          </section>
+        )}
 
-      {cv.experience.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-xl font-display font-bold text-ink mb-4">
-            Experience
-          </h2>
-          <div className="space-y-6">
-            {cv.experience.map((exp, i) => (
-              <div key={i}>
-                <div className="flex items-start justify-between mb-1">
-                  <div>
-                    <h3 className="font-display font-bold text-ink">
-                      {exp.role}
-                    </h3>
-                    <p className="text-sm font-body text-ink-muted">
-                      {exp.company}
-                    </p>
+        {cv.experience.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-3">
+              Experience
+            </h2>
+            <div className="space-y-4">
+              {cv.experience.map((exp, i) => (
+                <div key={i} className="border-l-2 border-border-light pl-3">
+                  <div className="flex items-start justify-between mb-1">
+                    <div>
+                      <h3 className="text-sm font-bold font-body text-ink">
+                        {exp.role}
+                      </h3>
+                      <p className="text-xs font-body text-ink-muted">
+                        {exp.company}
+                      </p>
+                    </div>
+                    <span className="text-xs font-body text-ink-faint whitespace-nowrap">
+                      {exp.startDate}–{exp.endDate}
+                    </span>
                   </div>
-                  <span className="text-xs font-body text-ink-faint whitespace-nowrap">
-                    {exp.startDate} — {exp.endDate}
-                  </span>
+                  {exp.highlights.length > 0 && (
+                    <ul className="list-disc list-inside text-xs font-body text-ink space-y-0.5 mt-1">
+                      {exp.highlights.map((h, j) => (
+                        <li key={j}>{h}</li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                {exp.description && (
-                  <p className="text-sm font-body text-ink-muted mb-2">
-                    {exp.description}
-                  </p>
-                )}
-                {exp.highlights.length > 0 && (
-                  <ul className="list-disc list-inside text-sm font-body text-ink space-y-1">
-                    {exp.highlights.map((h, j) => (
-                      <li key={j}>{h}</li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+              ))}
+            </div>
+          </section>
+        )}
 
-      {cv.education.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-xl font-display font-bold text-ink mb-4">
-            Education
-          </h2>
-          <div className="space-y-4">
-            {cv.education.map((edu, i) => (
-              <div key={i} className="flex items-start justify-between">
-                <div>
-                  <h3 className="font-display font-bold text-ink">
+        {cv.education.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-3">
+              Education
+            </h2>
+            <div className="space-y-3">
+              {cv.education.map((edu, i) => (
+                <div key={i} className="border-l-2 border-border-light pl-3">
+                  <h3 className="text-sm font-bold font-body text-ink">
                     {edu.institution}
                   </h3>
-                  <p className="text-sm font-body text-ink-muted">
-                    {edu.degree}
-                  </p>
+                  <div className="flex items-center justify-between text-xs font-body">
+                    <span className="text-ink-muted">{edu.degree}</span>
+                    <span className="text-ink-faint">
+                      {edu.startDate}–{edu.endDate}
+                    </span>
+                  </div>
                 </div>
-                <span className="text-xs font-body text-ink-faint whitespace-nowrap">
-                  {edu.startDate} — {edu.endDate}
+              ))}
+            </div>
+          </section>
+        )}
+
+        {cv.skills.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-3">
+              Skills
+            </h2>
+            <div className="flex flex-wrap gap-1.5">
+              {cv.skills.map((skill, i) => (
+                <span
+                  key={i}
+                  className="px-2 py-0.5 border border-border rounded-sm text-xs font-body text-ink"
+                >
+                  {skill}
                 </span>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+              ))}
+            </div>
+          </section>
+        )}
 
-      {cv.skills.length > 0 && (
-        <section className="mb-8">
-          <h2 className="text-xl font-display font-bold text-ink mb-3">
-            Skills
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {cv.skills.map((skill, i) => (
-              <span
-                key={i}
-                className="px-3 py-1 bg-surface-elevated border border-border-light rounded-full text-sm font-body text-ink"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {cv.links.length > 0 && (
-        <section>
-          <h2 className="text-xl font-display font-bold text-ink mb-3">
-            Links
-          </h2>
-          <div className="flex flex-wrap gap-3 text-sm font-body">
-            {cv.links.map((link, i) => (
-              <a
-                key={i}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent hover:text-accent-hover transition-colors"
-              >
-                {link.label} →
-              </a>
-            ))}
-          </div>
-        </section>
-      )}
+        {cv.links.length > 0 && (
+          <section>
+            <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-3">
+              Links
+            </h2>
+            <div className="flex flex-wrap gap-3 text-xs font-body">
+              {cv.links.map((link, i) => (
+                <a
+                  key={i}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors"
+                >
+                  {link.label} →
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
     </div>
   );
 }

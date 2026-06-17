@@ -9,59 +9,58 @@ export default async function About() {
   const profile = await getGitHubProfile();
 
   return (
-    <div className="max-w-prose mx-auto px-6 py-section">
-      <h1 className="text-4xl font-display font-bold text-ink mb-8">About</h1>
+    <div className="max-w-page mx-auto px-6 pt-12 pb-16">
+      <div className="max-w-prose mx-auto">
+        <div className="notebook-header-line mb-6"></div>
+        <h1 className="text-2xl font-bold font-display text-ink mb-6">About</h1>
 
-      <div className="flex items-start gap-6 mb-8">
-        <img
-          src={profile.avatar_url}
-          alt={profile.name || profile.login}
-          className="w-20 h-20 rounded-full border-2 border-border"
-        />
-        <div>
-          <h2 className="text-2xl font-display font-bold text-ink">
-            {profile.name || profile.login}
-          </h2>
-          <p className="text-sm font-body text-ink-muted mt-1">
-            {profile.location && `📍 ${profile.location}`}
+        <div className="font-body text-sm text-ink space-y-4 leading-relaxed">
+          <div className="flex items-center gap-4 mb-6 p-3 border border-border rounded-sm">
+            <img
+              src={profile.avatar_url}
+              alt={profile.name || profile.login}
+              className="w-12 h-12 rounded-full border border-border"
+            />
+            <div>
+              <p className="font-bold text-ink">
+                {profile.name || profile.login}
+              </p>
+              <p className="text-xs text-ink-faint">
+                {profile.location && `📍 ${profile.location}`}
+              </p>
+            </div>
+          </div>
+
+          <p>{profile.bio || "Aspiring software engineer, always learning."}</p>
+
+          <p>
+            I&apos;m currently in 12th grade, exploring the world of software
+            engineering through hands-on projects. From Hyprland ricing to web
+            development, I love building things that look good and work well.
+          </p>
+
+          <p>
+            This portfolio is my corner of the internet — a place where I share
+            what I&apos;m building, learning, and thinking about.
           </p>
         </div>
-      </div>
 
-      <div className="space-y-6 font-body text-ink leading-relaxed">
-        <p>
-          {profile.bio || "Aspiring software engineer, always learning."}
-        </p>
-        <p>
-          I&apos;m currently in 12th grade, exploring the world of software
-          engineering through hands-on projects. From Hyprland ricing to web
-          development, I love building things that look good and work well.
-        </p>
-        <p>
-          This portfolio is my corner of the internet — a place where I share
-          what I&apos;m building, learning, and thinking about.
-        </p>
-      </div>
-
-      <div className="mt-8 pt-8 border-t border-border">
-        <h3 className="text-lg font-display font-bold text-ink mb-3">Find me</h3>
-        <ul className="space-y-2 font-body text-sm">
-          <li>
-            <a
-              href={profile.html_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent hover:text-accent-hover transition-colors"
-            >
-              GitHub → {profile.login}
-            </a>
-          </li>
-          {profile.public_repos > 0 && (
-            <li className="text-ink-faint">
-              {profile.public_repos} public repos · {profile.followers} followers
-            </li>
-          )}
-        </ul>
+        <div className="mt-8 pt-4 border-t border-border">
+          <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-3">
+            Find me
+          </h2>
+          <a
+            href={profile.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-body text-accent hover:text-accent-hover underline underline-offset-2 transition-colors"
+          >
+            github.com/{profile.login} →
+          </a>
+          <p className="text-xs text-ink-faint mt-1 font-body">
+            {profile.public_repos} public repos · {profile.followers} followers
+          </p>
+        </div>
       </div>
     </div>
   );

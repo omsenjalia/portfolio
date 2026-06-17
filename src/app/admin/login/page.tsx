@@ -2,24 +2,23 @@ import { signIn } from "@/auth";
 
 export default function LoginPage() {
   return (
-    <main className="section-full flex items-center justify-center">
-      <div className="text-center max-w-sm mx-auto px-6">
-        <h1 className="text-3xl font-display font-bold mb-6">Sign In</h1>
-        <form
-          action={async () => {
-            "use server";
-            await signIn("github", { redirectTo: "/admin" });
-          }}
+    <div className="max-w-sm mx-auto px-6 pt-24">
+      <div className="notebook-header-line mb-6"></div>
+      <h1 className="text-2xl font-bold font-display text-ink mb-6">Sign In</h1>
+      <form
+        action={async () => {
+          "use server";
+          await signIn("github", { redirectTo: "/admin" });
+        }}
+      >
+        <button
+          type="submit"
+          className="px-4 py-2 bg-ink text-paper text-sm font-body rounded-sm
+                     hover:bg-ink-light transition-colors"
         >
-          <button
-            type="submit"
-            className="px-6 py-3 bg-ink text-paper font-body rounded-md
-                       hover:bg-ink-light transition-colors duration-300"
-          >
-            Continue with GitHub
-          </button>
-        </form>
-      </div>
-    </main>
+          Continue with GitHub →
+        </button>
+      </form>
+    </div>
   );
 }

@@ -147,3 +147,22 @@ a:hover {
 .section-full {
   min-height: 100svh;
 }
+
+.notebook-page {
+  background-image:
+    linear-gradient(
+      var(--color-border-light) 1px,
+      transparent 1px
+    );
+  background-size: 100% 2rem;
+  background-position-y: -0.65rem;
+}
+
+.notebook-header-line {
+  border-top: 2px solid var(--color-accent);
+  width: 4rem;
+}
+
+@media print {
+  body::after { display: none; }
+}

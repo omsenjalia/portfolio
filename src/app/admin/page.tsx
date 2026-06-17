@@ -6,18 +6,17 @@ export default async function AdminDashboard() {
   if (!session?.user) redirect("/api/auth/signin");
 
   return (
-    <main className="section-full flex items-center justify-center">
-      <div className="text-center max-w-prose mx-auto px-6">
-        <h1 className="text-4xl font-display font-bold mb-4">
-          Admin Dashboard
-        </h1>
-        <p className="text-ink-muted font-body mb-4">
-          Welcome, {session.user.name || "admin"}
-        </p>
-        <p className="text-sm text-ink-faint">
-          Phase 0 — Auth is working. Dashboard UI comes in Phase 5.
-        </p>
-      </div>
-    </main>
+    <div className="max-w-prose mx-auto px-6 pt-12">
+      <div className="notebook-header-line mb-6"></div>
+      <h1 className="text-2xl font-bold font-display text-ink mb-2">
+        Admin
+      </h1>
+      <p className="text-sm font-body text-ink-muted mb-4">
+        Welcome, {session.user.name || "admin"}
+      </p>
+      <p className="text-xs font-body text-ink-faint">
+        Dashboard UI coming in a later phase.
+      </p>
+    </div>
   );
 }

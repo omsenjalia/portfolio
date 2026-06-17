@@ -6,97 +6,87 @@ export const metadata: Metadata = {
 
 export default function Colophon() {
   return (
-    <div className="max-w-prose mx-auto px-6 py-section">
-      <h1 className="text-4xl font-display font-bold text-ink mb-2">Colophon</h1>
-      <p className="text-sm font-body text-ink-faint mb-8">
-        How this site is built and why.
-      </p>
+    <div className="max-w-page mx-auto px-6 pt-12 pb-16">
+      <div className="max-w-prose mx-auto">
+        <div className="notebook-header-line mb-6"></div>
+        <h1 className="text-2xl font-bold font-display text-ink mb-6">Colophon</h1>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-display font-bold text-ink mb-3">
-          Technology
-        </h2>
-        <ul className="space-y-3 font-body text-ink text-sm">
-          <li>
-            <strong className="font-bold">Next.js 16</strong> — React framework
-            with App Router and server components
-          </li>
-          <li>
-            <strong className="font-bold">Tailwind CSS v4</strong> — CSS-first
-            utility framework with custom design tokens
-          </li>
-          <li>
-            <strong className="font-bold">Auth.js v5</strong> — GitHub OAuth
-            for admin authentication
-          </li>
-          <li>
-            <strong className="font-bold">GSAP</strong> — Animation library
-            (future phases)
-          </li>
-          <li>
-            <strong className="font-bold">Lenis</strong> — Smooth scrolling
-            (future phases)
-          </li>
-          <li>
-            <strong className="font-bold">react-markdown</strong> — Markdown
-            rendering for content pages
-          </li>
-        </ul>
-      </section>
+        <section className="mb-6">
+          <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-2">
+            Technology
+          </h2>
+          <ul className="space-y-1.5 font-body text-sm text-ink">
+            <li>
+              <strong className="font-bold">Next.js 16</strong> — React framework
+              with App Router
+            </li>
+            <li>
+              <strong className="font-bold">Tailwind CSS v4</strong> — CSS-first
+              design tokens
+            </li>
+            <li>
+              <strong className="font-bold">Auth.js v5</strong> — GitHub OAuth
+              for admin
+            </li>
+            <li>
+              <strong className="font-bold">GSAP + Lenis</strong> — Animations
+              and smooth scroll
+            </li>
+            <li>
+              <strong className="font-bold">react-markdown</strong> — Markdown
+              rendering
+            </li>
+          </ul>
+        </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-display font-bold text-ink mb-3">
-          Design
-        </h2>
-        <ul className="space-y-3 font-body text-ink text-sm">
-          <li>
-            <strong className="font-bold">Typography:</strong> Syne (display) +
-            DM Mono (body/code) — both from Google Fonts
-          </li>
-          <li>
-            <strong className="font-bold">Accent:</strong> Warm terracotta (#C4713B)
-          </li>
-          <li>
-            <strong className="font-bold">Palette:</strong> Cream paper (#F4F0E6),
-            ink (#1B1A17), subtle noise texture overlay
-          </li>
-          <li>
-            <strong className="font-bold">Aesthetic:</strong> Notebook / zine —
-            warm, minimal, tactile
-          </li>
-        </ul>
-      </section>
+        <section className="mb-6">
+          <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-2">
+            Design
+          </h2>
+          <ul className="space-y-1.5 font-body text-sm text-ink">
+            <li>
+              <strong className="font-bold">Syne</strong> +{" "}
+              <strong className="font-bold">DM Mono</strong> — Display + body
+              fonts from Google Fonts
+            </li>
+            <li>
+              <strong className="font-bold">Terracotta</strong> (#C4713B) — Warm
+              accent on cream paper (#F4F0E6)
+            </li>
+            <li>
+              <strong className="font-bold">Notebook/zine</strong> — Warm,
+              minimal, tactile
+            </li>
+          </ul>
+        </section>
 
-      <section className="mb-8">
-        <h2 className="text-xl font-display font-bold text-ink mb-3">
-          Data
-        </h2>
-        <p className="font-body text-ink text-sm leading-relaxed">
-          This site uses GitHub as its database. Content is stored in the
-          portfolio-content repository and fetched via the GitHub API at build
-          and request time. This approach keeps the site fast while allowing
-          easy content updates through git.
-        </p>
-      </section>
+        <section className="mb-6">
+          <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-2">
+            Data
+          </h2>
+          <p className="font-body text-sm text-ink leading-relaxed">
+            GitHub is the database. Content lives in the portfolio-content repo
+            and is fetched via the GitHub API.
+          </p>
+        </section>
 
-      <section>
-        <h2 className="text-xl font-display font-bold text-ink mb-3">
-          Deployment
-        </h2>
-        <p className="font-body text-ink text-sm leading-relaxed">
-          Built with <code className="bg-surface-elevated px-1 rounded text-accent">npm run build</code> and deployed on Vercel.
-          Source code available on{" "}
-          <a
-            href="https://github.com/omsenjalia/portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-accent hover:text-accent-hover transition-colors"
-          >
-            GitHub
-          </a>
-          .
-        </p>
-      </section>
+        <section>
+          <h2 className="text-xs font-bold tracking-widest font-body text-ink-faint uppercase mb-2">
+            Deployment
+          </h2>
+          <p className="font-body text-sm text-ink leading-relaxed">
+            Built with <code className="bg-surface-elevated px-1 rounded-sm text-accent">npm run build</code> and hosted on Vercel.{" "}
+            <a
+              href="https://github.com/omsenjalia/portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent-hover underline underline-offset-2 transition-colors"
+            >
+              Source →
+            </a>
+          </p>
+        </section>
+      </div>
     </div>
   );
 }

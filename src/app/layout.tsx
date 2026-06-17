@@ -47,11 +47,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${dmMono.variable}`}>
-      <body>
+      <body className="bg-paper">
         <SmoothScroll>
-          <Nav />
-          <main className="min-h-screen">{children}</main>
-          <Footer />
+          <div className="min-h-screen flex flex-col">
+            <Nav />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
         </SmoothScroll>
       </body>
     </html>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/cv", label: "CV" },
   { href: "/now", label: "Now" },
@@ -10,27 +11,24 @@ const links = [
 
 export default function Nav() {
   return (
-    <nav className="sticky top-0 z-nav bg-paper/90 backdrop-blur-sm border-b border-border">
-      <div className="max-w-page mx-auto px-6 h-14 flex items-center justify-between">
-        <Link
-          href="/"
-          className="font-display text-lg font-bold text-ink hover:text-accent transition-colors"
-        >
-          Om Senjalia
-        </Link>
-        <ul className="flex items-center gap-6">
-          {links.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm font-body text-ink-muted hover:text-accent transition-colors"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+    <div className="flex items-center justify-between px-6 py-3 border-b border-border">
+      <Link
+        href="/"
+        className="font-bold font-display text-sm tracking-widest text-ink uppercase hover:text-accent transition-colors"
+      >
+        Om Senjalia
+      </Link>
+      <nav className="flex items-center gap-4">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="text-xs font-bold font-body tracking-widest text-ink-muted uppercase hover:text-accent hover:underline transition-all duration-300"
+          >
+            {link.label}
+          </Link>
+        ))}
+      </nav>
+    </div>
   );
 }
