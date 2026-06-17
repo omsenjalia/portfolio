@@ -13,6 +13,19 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      "/about",
+      "/cv",
+      "/now",
+      "/uses",
+      "/colophon",
+    ].map((source) => ({
+      source,
+      destination: "/",
+      permanent: true,
+    }));
+  },
 };
 
 export default nextConfig;
